@@ -1,15 +1,15 @@
 import React from "react";
 import ReactApexChart from "react-apexcharts";
 
-const ApexChart = ({ memory, cpu, xAxisName, dataDisplayedOnChart }) => {
+const ApexChart = ({ memory, cpu, xAxisName, dataDisplayedOnChart, color }) => {
   const series = [
     {
       name: "CPU (%)",
-      data: cpu !== [] ? cpu.slice(0, dataDisplayedOnChart) : [],
+      data: !cpu ? [] : cpu.slice(0, dataDisplayedOnChart),
     },
     {
       name: "RAM (%)",
-      data: memory !== [] ? memory.slice(0, dataDisplayedOnChart) : [],
+      data: !memory ? [] : memory.slice(0, dataDisplayedOnChart),
     },
   ];
 
@@ -44,30 +44,40 @@ const ApexChart = ({ memory, cpu, xAxisName, dataDisplayedOnChart }) => {
     },
     fill: {
       opacity: 1,
-      colors: [
+      // colors: [
         // attempting to display different colors to show user level of utilization.
         // where red = overutilized
         // green = okay
         // yellow = underutilized
-        function ({ value, seriesIndex, w }) {
-          if (value < 66) {
-            return "#ffff00";
-          } else if (value >= 66 || value <= 90) {
-            return "#00ab66";
-          } else if (value > 90) {
-            return "#000000";
-          }
-        },
-        function ({ value, seriesIndex, w }) {
-          if (value < 66) {
-            return "#ffff00";
-          } else if (value >= 66 || value <= 90) {
-            return "#00ab66";
-          } else {
-            return "#000000";
-          }
-        },
-      ],
+        //   function ({ value, seriesIndex, w }) {
+        //     if (!value) {
+        //       return;
+        //     } else {
+        //       if (value < 66) {
+        //         return "#ffff00";
+        //       } else if (value >= 66 && value <= 90) {
+        //         return "#00ab66";
+        //       } else if (value > 90) {
+        //         return "#ff000";
+        //       }
+        //     }
+        //   },
+        //   function ({ value, seriesIndex, w }) {
+        //     if (!value) {
+        //       return;
+        //     } else {
+        //       if (value < 66) {
+        //         return "#ffff00";
+        //       } else if (value >= 66) {
+        //         return "#00ab66";
+        //       } else if (value <= 90) {
+        //         return "#00ab66";
+        //       } else if (value > 90) {
+        //         return "#ff000";
+        //       }
+        //     }
+        //   },
+      // ],
     },
     legend: {
       position: "top",

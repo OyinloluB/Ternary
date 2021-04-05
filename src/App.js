@@ -29,6 +29,10 @@ const App = () => {
   let xAxisName = [];
   let teamLabelsWithDuplicate = [];
   let environmentLabelsWithDuplicate = [];
+  let underUtilisedData = [];
+  let moderatelyUtilisedData = [];
+  let overUtilisedData = [];
+  let color = [];
 
   // iterate through utilization metrics array
   for (let i = 0; i < utilizationMetrics?.length; i++) {
@@ -56,7 +60,7 @@ const App = () => {
   }
 
   // Collecting single occurences of the label data
-  const removeDuplicate = (arr) => arr.filter((v, i) => arr.indexOf(v) === i);
+  const removeDuplicate = (arr) => arr?.filter((v, i) => arr?.indexOf(v) === i);
 
   const teamLabelWithoutDuplicate = removeDuplicate(teamLabelsWithDuplicate);
   const environmentLabelsWithoutDuplicate = removeDuplicate(
@@ -89,8 +93,6 @@ const App = () => {
     setUtilizationMetrics(filteredUtilizedMetricsData);
   };
 
-
-
   return (
     <div>
       <Menu
@@ -109,6 +111,7 @@ const App = () => {
         cpu={cpu}
         xAxisName={xAxisName}
         dataDisplayedOnChart={dataDisplayedOnChart}
+        color={color}
       />
     </div>
   );
