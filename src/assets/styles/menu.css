@@ -1,0 +1,35 @@
+.menu {
+  padding: 30px 0;
+  display: grid;
+  grid-template-columns: 48% 48%;
+  column-gap: 4%;
+}
+
+select {
+  width: 100%;
+  padding: 10px;
+  font-size: 16px;
+}
+
+option {
+  padding: 15px;
+}
+
+.inputWrapper {
+  display: flex;
+}
+
+input {
+  width: 100%;
+  font-size: 16px;
+  height: 20px;
+  padding: 5px;
+}
+
+button {
+  font-size: 16px;
+  color: white;
+  background: black;
+  border: none;
+  outline: none;
+}
